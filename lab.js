@@ -9,6 +9,12 @@ function alertName() {
         alert("File name: " + this.files[0].name );
     });
 	
+	test('Testing name!', function(assert) {
+		if (this.files[0].name == "test_file.txt"){
+			// this should be true
+			assert.equal(this.files[0].name, "test_file.txt"); // we *expect* this to pass
+		}
+	});
 }
 
 function alertSize(){    
@@ -19,6 +25,15 @@ function alertSize(){
     file.addEventListener('change', function() {
         alert("Size : " + this.files[0].size + " bytes");
     });
+	
+	test('Testing size!', function(assert) {
+		var file = document.getElementById('size');
+		if (this.files[0].name == "test_file.txt"){
+			var size = this.files[0].size;
+			// this should be 43
+			assert.equal(size, 43); // we *expect* this to pass
+		}
+	});
 }
 
 function alertSha1(){
@@ -41,9 +56,3 @@ function alertMD5() {
     });
 }
 
-test('Testing size!', function(assert) {
-        var file = document.getElementById('size');
-		var size = this.files[0].size;
-		// this should be 43
-        assert.equal(size, 43); // we *expect* this to pass
-      });
